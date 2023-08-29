@@ -17,3 +17,28 @@ where-object
   ex1: get-service | Were-object{$_.Status -eq 'running'}
   ex2: get-process | where-object {$_.company -like 'micro*'} | format-table name, description, company
       -like and -notlike allow you to use wildcard (*)
+get-unique
+    pipe it to something and it'll only output the unique numbers or whatever the input was
+measure-object
+    length
+    .count
+     ex1: (get-childitem | measure-object length).count
+    ex2: (get-childitem | measure-object length -Maximum -Minimum -Sum
+compare-object
+    $before
+    $after
+
+add-object
+    ex1: add-member -MemberType Noteproperty -name Color -value Red -InputObject $mytruck
+    ex2: Add-Member -me NoteProperty -in $mytruck -na Make -Value Ford
+    ex3: Add-Member -InputObject $mytruck NoteProperty Model "F-150 Raptor"
+    ex4: $mytruck | Add-Member NoteProperty Cab SuperCrew
+    ex5: $soldier = [PSCustomObject]@{
+                        "Firstname"    = "Joe"
+                        "LastName"     = "Snuffy"
+                        "MilitaryRank" = "SSG"
+                        "MOS"          = "17c"
+                        "Position"     = "Host Analyst"
+                        "hunt"         ={"find bad"}
+         }
+         add-member | $soldier
