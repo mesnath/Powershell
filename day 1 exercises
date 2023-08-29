@@ -2,14 +2,14 @@
 Ensure that you have the latest copy of help by updating your help system.
           update-help
     Which cmdlets deal with the viewing/manipulating of processes?
-          get-childitem
+          get-process
     Display a list of services installed on your local computer.
           get-service
     What cmdlets are used to write or output objects or text to the screen?
           write-host
           write-output
     What cmdlets can be used to create, modify, list, and delete variables?
-          get-variable
+          set,get,remove-variable
     What cmdlet can be used, other than Get-Help, to find and list other cmdlets?
           get-command
     Find the cmdlet that is used to prompt the user for input.
@@ -52,13 +52,13 @@ Ensure that you have the latest copy of help by updating your help system.
           $quo = $var1 / $var2
     Replace the variables in text with their values in the following format:
         "var1" + "var2" = "sum"
-          Write-Output "var1" + "var2" = 'sum'
+          "{0} + {1} = {2}" -f $var1, $var2, $sum
     Replace the variables in text with their values in the following format:
         "var1" - "var2" = "sub"
-          Write-Output "var1" - "var2" = 'sub
+          "{0} - {1} = {2}" -f $var1, $var2, $sub
     Replace the variables in text with their values in the following format:
         "var1" * "var2" = "prod"
-          Write-Output "var1" * "var2" = 'prod'
+          "{0} * {1} = {2}" -f $var1, $var2, $prod
     Replace the variables in text with their values in the following format:
         "var1" / "var2" = "quo"
-          Write-Output "var1" / "var2" = 'quo'
+          "{0} / {1} = {2}" -f $var1, $var2, $quo
