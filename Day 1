@@ -8,6 +8,7 @@ get-command -noun <noun>
 get command -verb <verb>
 get-eventlog -Logname -Secuity -computername server -verbose
       gets security logs for the computer 'server'
+read-host
 write-host
 write-output
 
