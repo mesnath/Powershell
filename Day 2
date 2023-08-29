@@ -1,0 +1,19 @@
+Scriptblock
+    lines of code in script
+      ex1: $b = { 1 + 1 }
+      ex2: $myblock = { Get=servoce | Format-Table Name, Status }
+                      ^_____________________________________^
+                                        |_________________________ script block
+    called with &
+      ex1: & $myblock
+      ex2: $a += &$b
+sort
+  ex1: Get-ChildItem | Sort-Object -propery length -descending
+  ex1: get-childitem | Sort-Object | -property extension | format-table -groupby extension
+  ex3: get-service | group-object Status format-table -gropby status
+  ex4: get-variable | sort-object name format-table name, desciption -autosize -wrap
+where-object
+  kinda just like do the first cmdlet where applicable and specifies the parameters for it to be applicable
+  ex1: get-service | Were-object{$_.Status -eq 'running'}
+  ex2: get-process | where-object {$_.company -like 'micro*'} | format-table name, description, company
+      -like and -notlike allow you to use wildcard (*)
