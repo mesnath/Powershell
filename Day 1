@@ -1,1 +1,21 @@
 xfreerdp /u:student /v:10.50.21.25 -dynamic-resolution +glyph-cache +clipboard
+
+=============commands==============
+get-help <command> -showwindow
+get-command
+get-verb
+get-command -noun <noun>
+get command -verb <verb>
+get-eventlog -Logname -Secuity -computername server -verbose
+      gets security logs for the computer 'server'
+write-host
+write-output
+
+===============notes===============
+
+can run external commands
+    some linux, mos windows
+runs in order of alias, function, commandlet
+$_
+    pipeline variable
+write-host doesn't pass through the pipeline but write-output does
