@@ -32,3 +32,52 @@ have to pipe information into it
       for($i = 0; $i -le 255; $i++) {
           write-host 192.168.0.$i
       }
+***ARRAYS***
+$x = Get-process
+($X).gettype() # check the type
+$x -is [array] # returns bool on if it's an array or not
+$x.count # returns number of items in array
+
+$array2 = "world, "hello", 5, 10, (get-date)
+$array3 = @()  # empty array
+
+$array = -5..10
+$array[1]   # calls item on INDEX VALUE 1
+$array[-1]  # calls last item in array
+$array[4, -1, 2] # calls items you want in array//slices from 4 to the end
+$arra[4..$array.length] # starts on index value 4 to the end
+
+jagged array:
+    array with other arrays in it
+$jagarray = "joe", "jim", "jan", (1, ('apple', 'pear'), 3), "jay"
+$jagarray[3]
+  # 1 apple pear  3
+$jagarray[3][0]
+  # 1
+$jagarray[3][1]
+  # apple pear
+$jagarray[3][1][1]
+  # pear
+
+multidimensional array:
+  arrays within arrays
+
+$targetingararay = @(
+    (35.7519, 51.3347, "tehran"),
+    (39.9042, 116.4074, "bejing"),
+    (39.0738, 1125.8198, "Pyongyang"),
+    (33.5168, 36.2765, "Damascus")
+)
+$TargetingArray[0][1]
+  # 51.3347
+foreach ($line in $targetingararay) {
+    if ($line[2] -eq "Bejing"){
+        Write-Output $line
+    }
+}
+    # 39.9042 116.4074 beijing
+
+***HASH TABLE/DICTIONARY***
+$mylist = @{First = "John"; Last = "Doe"; Mid = "Bon"; Age = 35}
+$mylist.Date = Get-Date           # appends date with key 'date' and value <output of Get-date>
+$mylist["Location"] = "Germany"   #appends location with key "Location" and value "Germany"
