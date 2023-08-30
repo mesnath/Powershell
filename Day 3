@@ -81,3 +81,51 @@ foreach ($line in $targetingararay) {
 $mylist = @{First = "John"; Last = "Doe"; Mid = "Bon"; Age = 35}
 $mylist.Date = Get-Date           # appends date with key 'date' and value <output of Get-date>
 $mylist["Location"] = "Germany"   #appends location with key "Location" and value "Germany"
+
+***REGEX***
+google or use cyberchef (has prebuilts like ipv4)
+
+***STRING MANIPULATION***
+"" - allows variables to be converted
+'' - no variables
+` = allows you to do things such as escape quotation marks
+`n - New Line
+`t - Tabulator (Tab)
+`b - Backspace
+`’ - Single Quotation Mark
+`" - Double Quotation Mark
+`0 - Null
+`` - Backtick Character
+
+***REPLACE***
+#can use regex
+"Hello John" -replace "John", "world"
+  #Hello World
+'Server1,Server2,Server3' -replace '[,]', ';'
+
+***MATCH***
+# can use regex, use -like for wildcards(*)
+(ipconfig) -match 'IPv4'
+
+***SPLITTING***
+$profile
+$profile -split'\.'
+  # \ is an escape character
+
+***JOINING***
+"cat","dog" -join "|"
+  # cat|dog
+
+***FUNCTIONS***
+function test-it {
+    'Hello World!'
+}
+
+function test-me($value) {
+    if($value) {
+        Write-host -foregroundcolor Green "True"
+    }
+    else {
+        Write-host -foregroundcolor red "false"
+    }
+}
