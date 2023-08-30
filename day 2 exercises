@@ -36,4 +36,4 @@ add-member | $WINOPS
 
 $line1 = "Do you have model number: MT5437 for john.doe@sharklasers.com?"
 $line2 = "What model number for john.doe@sharklasers.com?"
-$line1, $line2 -match "MT\d{4}"
+$line1,$line2 | % { if($_ -match "[A-Za-z]{2}\d{4}") { $Matches.Values } else { 'model not found' } }
