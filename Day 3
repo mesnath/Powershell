@@ -1,0 +1,34 @@
+***FOREACH-OBJECT***
+have to pipe information into it
+  $nums = 1,2,3,4,5
+  $nums | Foreach-Object{$_ * 2}
+    #nums becomes 2,4,6,8,10    
+*** FOREACH ITEM***
+  Foreach ($item in gci C:\ -recrse){$item.name}
+  ForEach($num in 1..5){$num * 2}
+*** WHILE LOOPS ***
+  while($num -lt 3) {
+    $num
+     $num++
+  }
+    #prints 2
+***DO WHILE Loop***
+  $num = 0
+  do {
+    $num
+    $num++
+}while($num -lt 3)
+    #prints 3
+*** DO UNTIL LOOP***
+      $num = 0
+      do {
+          $num
+          $num++
+    }until($num -gt 3)
+*** FOR LOOPS ***
+      for($num = 1; $num -le 3; $num++){
+      $num}
+
+      for($i = 0; $i -le 255; $i++) {
+          write-host 192.168.0.$i
+      }
