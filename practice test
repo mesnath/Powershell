@@ -90,3 +90,109 @@ function q10 ($filepath,$lasthash) {
        $hash = Get-FileHash -Algorithm SHA256 $filepath
        return $hash.hash -ne $lasthash
 }
+
+
+<# 4 #>
+function q1($var2,$var3,$var4,$var5) {
+    <# The parameters listed are the values of all angles
+       in a polygon except one. Find and return the value
+       of the remaining angle. If an impossible angle 
+       is found, return -1. 
+       The formula to find the sum of all angles of a 
+       polygon is `(n-2) * 180`, where `n` is the total 
+       number of angles. An impossible angle is one that 
+       is zero degrees (or less) or 360 degree (or more). 
+       #>
+       $sum = $var2 + $var3 + $var4 + $var5
+       return 540 - $sum
+}
+function q2($arr,$key) {
+    <# Search the 2 dimensional array for the first occurance 
+      of key at column index 0 and return the value at column
+      index 2 of the same row. Return -1 if the key is not found.
+    #>
+    foreach($row in $arr){
+        if ($row[0] -eq $key) {
+            return $row[2]
+            }   
+        }
+        return -1
+     
+}
+function q3 {
+    <# In a loop, prompt the user to enter a string until
+       the user enters an empty string (length of 0) to 
+       stop. Return the string with the maximum 
+       length that the user entered."
+	#>
+        ## *********************************GySgt Martinez Reviewed*********************************
+        $input = @()
+        do {
+            [string]$ui = Read-host
+                if ([int]$ui.length -gt 0){
+                    $input += $ui
+                }
+                else {
+                    $a = $input | Sort-Object {$_.length} -Descending
+                    return $a[0]
+                    #return $($ui | measure-object -Property length -maximum).Maximum
+                }
+             
+        }until ($input.Length -is 0)
+}
+function q4($filename,$start) {
+    <# Return the line of text from the file given by the `$filename
+	   argument that begins with the text specified by `$start.
+	   If no line in the file begins with the `$start text, return 
+	   $null."
+	#> $cont = get-content $filename | where-object {$input  -like ("$start*")}
+        if ($cont.length -eq 0){return $null} else {return $cont}
+       
+}
+function q5($path) {
+    <# Return the services in Stopped status sorted
+       descending by their Name
+	#> Get-Service $path | Where-Object {$_.Status -eq "stopped"} | sort -Descending
+}
+function q6($filename) {
+    <# Write each of the elements provided on the pipeline to the
+       file specified by the $filename argument on separate lines
+	#> $input > $filename
+        # return ($filename -join "`n")
+}
+function q7 {
+	<# Return the list of all startup apps that have an 
+       AppId 'not ending in }'.
+    #> return Get-startapps | Where-Object {$_.appid -notlike '*}'} 
+}
+function q8($arr) {
+    <# Combine the provided `$arr argument into a string separated 
+       by a '-' between each element and return 
+       this string #>
+       ($arr -join "`-")
+}
+function q9($addr) {
+	<# Return `$true when the given argument is an IPv4 address
+	   within the class 'E' otherwise return `$false. 
+       For an IPv4 address to be within class 'E', it
+       must fall within the range '240.0.0.0' to
+       '254.255.255.255'. 
+	#> $ip = $addr.split(".")
+        $counter = 0
+        if (($ip[0] -ge 240) -and ($ip[0] -le 254)){$counter += 1}
+        <#elseif (($ip[1] -ge 0) -and ($ip[1] -le 255)){$counter+= 1}
+        elseif (($ip[2] -ge 0) -and ($ip[2] -le 255)){$counter+= 1}
+        elseif (($ip[3] -ge 0) -and ($ip[3] -le 255)){$counter+= 1} else{break}#>
+        if ($counter -ge 1) {return $True} else {return $False}
+}
+function q10 () {
+    <# Return the current date/time as a string formatted in 
+       the following way:
+       YearMonthDay@Hour:Minute:Second
+       For example, If the current date/time is 5 minutes and 
+       2 seconds after 3 PM on February 8th, 2018, the return 
+       value should be:  20180208@15:05:02
+    #> get-date -Format yyyyMMdd'@'HH:mm:ss
+
+}
+
